@@ -1,33 +1,47 @@
-package practice1; // 1. O pacote vem sempre na primeira linha
+package practice1.main;
 
-// 2. O import vem logo abaixo do pacote
+import java.util.Scanner; // Importa a ferramenta de leitura de teclado
 import practice1.entities.Playground;
 
-// 3. A classe começa aqui
 public class Main {
 
-    // 4. O metodo principal (entry point)
     public static void main(String[] args) {
+        // Criamos o objeto Scanner para ler a entrada (System.in)
+        Scanner sc = new Scanner(System.in);
 
-        // Instanciando o objeto
+        // Criamos o objeto da sua entidade (o pote onde guardaremos os dados)
         Playground pessoa = new Playground();
 
-        // Atribuindo valores
-        pessoa.setNome("Daniel Silva");
-        pessoa.setCpf("123.456.789-00");
-        pessoa.setIdade(30);
-        pessoa.setAltura(1.82);
+        System.out.println("--- Cadastro de Usuário ---");
 
-        // Saída de dados
-        System.out.println("=========================");
-        System.out.println("      RELATÓRIO          ");
-        System.out.println("=========================");
+        // Lendo o Nome (String)
+        System.out.print("Digite o seu nome completo: ");
+        String nomeDigitado = sc.nextLine();
+        pessoa.setNome(nomeDigitado);
 
-        System.out.println("Nome:     " + pessoa.getNome());
-        System.out.println("CPF:      " + pessoa.getCpf());
-        System.out.println("Idade:    " + pessoa.getIdade() + " anos");
-        System.out.println("Altura:   " + pessoa.getAltura() + "m");
+        // Lendo o CPF (String)
+        System.out.print("Digite o seu CPF: ");
+        String cpfDigitado = sc.nextLine();
+        pessoa.setCpf(cpfDigitado);
 
-        System.out.println("=======================================");
+        // Lendo a Idade (int)
+        System.out.print("Digite a sua idade: ");
+        int idadeDigitada = sc.nextInt();
+        pessoa.setIdade(idadeDigitada);
+
+        // Lendo a Altura (double)
+        System.out.print("Digite a sua altura (ex: 1.75): ");
+        double alturaDigitada = sc.nextDouble();
+        pessoa.setAltura(alturaDigitada);
+
+        // Exibindo os dados que foram armazenados no objeto
+        System.out.println("\n--- Dados Armazenados com Sucesso! ---");
+        System.out.println("Nome: " + pessoa.getNome());
+        System.out.println("CPF: " + pessoa.getCpf());
+        System.out.println("Idade: " + pessoa.getIdade() + " anos");
+        System.out.println("Altura: " + pessoa.getAltura() + "m");
+
+        // Fechar o scanner é uma boa prática de gestão de memória
+        sc.close();
     }
-} // 5. Fecha a classe Main
+}
